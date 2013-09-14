@@ -2,6 +2,9 @@
 
 **Important:** Ensure existing explicit or transitive dependencies on the core *bootstrap* package are removed, or there will be styling conflicts.
 
+Original document below:-
+-------------------------
+
 ManagedUsers for Meteor
 ========================
 
