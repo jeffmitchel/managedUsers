@@ -11,6 +11,6 @@ Package.on_use(function(api) {
 });
 
 Package.on_test(function(api) {
-    api.use(['managedUsers-2', 'tinytest', 'test-helpers'], ['client', 'server']);
+    api.use(['tinytest', 'test-helpers'], ['client', 'server']);
     api.add_files('managedUsers_tests.js', ['client', 'server']);
 });
