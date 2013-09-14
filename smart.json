@@ -3,7 +3,7 @@
     "description": "Port of the managedUsers package, adapted to work with bootstrap-3.",
     "homepage": "https://github.com/adityamukho/managedUsers",
     "author": "Aditya Mukhopadhyay <aditya.mukhopadhyay@gmail.com>",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "git": "https://github.com/adityamukho/managedUsers.git",
     "packages": {
         "bootstrap-3": "0.3.4"
