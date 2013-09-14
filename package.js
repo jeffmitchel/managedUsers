@@ -1,12 +1,12 @@
 Package.describe({
-	summary: "A managed user extension to the base Meteor user system, with a default Admin user, and ability to add various permissions to all users."
+	summary: "Port of the managedUsers package, adapted to work with bootstrap-3."
 });
 
 Package.on_use(function(api) {
-	api.use(['minimongo', 'mongo-livedata', 'templating', 'accounts-password', 'accounts-ui', 'email'], ['client', 'server']);
+	api.use(['minimongo', 'mongo-livedata', 'templating', 'accounts-password', 'email'], ['client', 'server']);
 	api.use(['handlebars'], 'client');
 	api.add_files(['managedUsers.js'], ['client', 'server']);
-	api.add_files(['managedUsersTemplates.html', 'managedUsersTemplates.js'], 'client');
+	api.add_files(['managedUsersTemplates.html', 'managedUsersTemplates.js', 'managedUsers.css'], 'client');
 });
 
 Package.on_test(function(api) {

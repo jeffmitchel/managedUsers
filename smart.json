@@ -1,10 +1,11 @@
 {
-	"name": "managedUsers",
-	"description": "A Managed User system, with a single administrator account (admin), with the ability to create/modify accounts, and set permissions.",
-	"homepage": "https://github.com/jzgoda/managedUsers",
-	"author": "Jon Zgoda <jon@zgoda.us>",
-	"version": "0.1.6",
-	"git": "https://github.com/jzgoda/managedUsers.git",
-	"packages": {
-	}
+    "name": "managedUsers-2",
+    "description": "Port of the managedUsers package, adapted to work with bootstrap-3.",
+    "homepage": "https://github.com/adityamukho/managedUsers",
+    "author": "Aditya Mukhopadhyay <aditya.mukhopadhyay@gmail.com>",
+    "version": "0.2.0",
+    "git": "https://github.com/adityamukho/managedUsers.git",
+    "packages": {
+        "accounts-ui-bootstrap-3": "0.2.2"
+    }
 }

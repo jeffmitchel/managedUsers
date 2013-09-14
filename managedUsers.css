@@ -1,0 +1,12 @@
+/*
+    Document   : managedUsers
+    Created on : 14 Sep, 2013, 9:51:39 AM
+    Author     : aditya
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#managedUsers-table .editUser, #managedUsers-table .remove-user {
+    cursor: pointer;
+}
+
