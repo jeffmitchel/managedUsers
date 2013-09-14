@@ -1,6 +1,6 @@
 **This is a port of the *managedUsers* meteorite package that is styled using Bootstrap 3.**
 
-** Important:** Ensure existing explicit or transitive dependencies on the core *bootstrap* package are removed, or there will be styling conflicts.
+**Important:** Ensure existing explicit or transitive dependencies on the core *bootstrap* package are removed, or there will be styling conflicts.
 
 ManagedUsers for Meteor
 ========================
