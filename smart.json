@@ -6,6 +6,6 @@
     "version": "0.2.0",
     "git": "https://github.com/adityamukho/managedUsers.git",
     "packages": {
-        "accounts-ui-bootstrap-3": "0.2.2"
+        "bootstrap-3": "0.3.4"
     }
 }

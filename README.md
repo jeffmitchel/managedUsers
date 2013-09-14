@@ -1,3 +1,7 @@
+**This is a port of the *managedUsers* meteorite package that is styled using Bootstrap 3.**
+
+** Important:** Ensure existing explicit or transitive dependencies on the core *bootstrap* package are removed, or there will be styling conflicts.
+
 ManagedUsers for Meteor
 ========================
 
@@ -20,7 +24,7 @@ mrt add managedUsers
 ```	
 Meteor Package Requirements: bootstrap, accounts-password, accounts-ui, email
 
-External Requirement: bootbox (http://bootboxjs.com/)
+External Requirement: bootbox (http://bootboxjs.com/) **(Use the latest version from the site or from bower, that uses bootstrap-3. The *bootboxjs* meteorite package is still dependent on bootstrap-2.)**
 
 Then just add the ` {{> managedUsers}} ` template wherever you want the management interface to be.
 
