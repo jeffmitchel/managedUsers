@@ -158,7 +158,6 @@ if(Meteor.isClient) {
 
 	// Pass a user object, and get the email address
 	Handlebars.registerHelper('emailAddress', function(user) {
-		console.log(user);
 		if(user && user.emails)
 			return user.emails[0].address;
 	});
