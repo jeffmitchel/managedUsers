@@ -142,6 +142,15 @@ Template.managedUserForm.permissions = function() {
 	return permissions;
 }
 
+Template.managedUserForm.helpers({
+	disableIfAdminUser: function () {
+		return this.username === 'admin' ? 'disabled' : '';
+	},
+	isNotAdminUser: function () {
+		return this.username !== 'admin';
+	}
+})
+
 // managedUserEditModal
 Template.managedUserEditModal.helpers({
 	editManagedUserError: function() {

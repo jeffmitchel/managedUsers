@@ -103,13 +103,13 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="username">Username</label>
             <div class="col-md-6">
-                <input class="username form-control" type="text" placeholder="Username"/>
+                <input class="username form-control" type="text" placeholder="Username" {{disableIfAdminUser}} />
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label" for="name">Full Name</label>
             <div class="col-md-6">
-                <input class="name form-control" type="text" placeholder="Full Name"/>
+                <input class="name form-control" type="text" placeholder="Full Name" {{disableIfAdminUser}} />
             </div>
         </div>
         <div class="form-group">
@@ -118,19 +118,21 @@
                 <input class="email form-control" type="email" placeholder="Email"/>
             </div>
         </div>
-        {{#if permissions}}
-        <div class="form-group">
-            <label class="control-label col-md-2">Permissions</label>
-            <div class="permissions col-md-6">
-                {{#each permissions}}
-                <div class="checkbox">
-                    <label>
-                        <input class="{{name}} permission" type="checkbox">{{description}}
-                    </label>
+        {{#if isNotAdminUser}}
+            {{#if permissions}}
+            <div class="form-group">
+                <label class="control-label col-md-2">Permissions</label>
+                <div class="permissions col-md-6">
+                    {{#each permissions}}
+                    <div class="checkbox">
+                        <label>
+                            <input class="{{name}} permission" type="checkbox">{{description}}
+                        </label>
+                    </div>
+                    {{/each}}
                 </div>
-                {{/each}}
             </div>
-        </div>
+            {{/if}}
         {{/if}}
     </fieldset>
 </template>
