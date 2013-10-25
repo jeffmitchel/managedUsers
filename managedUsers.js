@@ -7,7 +7,7 @@ Meteor.ManagedUsers = {
 
 	// Input Validation
 	isAdmin: function() {
-		return (Meteor.user() &&  (Meteor.user().username === "admin"));
+		return Meteor.ManagedUsers.hasPermission('admin');
 	},
 
 	checkUsername: function(username, userId) {
@@ -50,8 +50,13 @@ if(Meteor.isServer) {
 
 
 	Meteor.publish("systemUsers", function() {
-		if(this.userId)
-			return Meteor.users.find({username: {$ne: "admin"}}, {sort: {userId: 1}, fields: {username: 1, profile: 1, emails: 1, permissions: 1}});
+		if(this.userId) {
+			var u = Meteor.users.findOne({ _id: this.userId});
+			if(u && (u.username === 'admin' || (u.permissions && u.permissions['admin'] === true)))
+				return Meteor.users.find({}, {sort: {userId: 1}, fields: {username: 1, profile: 1, emails: 1, permissions: 1}});
+			else
+				return Meteor.users.find({username: {$ne: "admin"}}, {sort: {userId: 1}, fields: {username: 1, profile: 1, emails: 1, permissions: 1}});
+		}
 	});
 
 
@@ -138,6 +143,7 @@ if(Meteor.isClient) {
 
 	// Pass a user object, and get the email address
 	Handlebars.registerHelper('emailAddress', function(user) {
+		console.log(user);
 		if(user && user.emails)
 			return user.emails[0].address;
 	});
