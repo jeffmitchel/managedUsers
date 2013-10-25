@@ -9,6 +9,9 @@ Template.managedUsers.helpers({
 
 	newManagedUserError: function() {
 		return Session.get("newManagedUserError");
+	},
+	removeClass: function() {
+		return this._id === Meteor.userId() || this.username === 'admin' ? 'prevent-remove' : 'remove-user';
 	}
 });
 
@@ -59,12 +62,12 @@ Template.managedUsers.events({
 	'click .editSave': function() {
 		var self = this;
 		var permissions = {};
-		_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) { 
+		_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) {
 			permissions[k] = $("#"+self._id+"_edit .permissions ."+k).prop('checked');
 		});
-		Meteor.call('updateUser', self._id, 
-			$("#"+self._id+"_edit .username").val(), 
-			$("#"+self._id+"_edit .name").val(), 
+		Meteor.call('updateUser', self._id,
+			$("#"+self._id+"_edit .username").val(),
+			$("#"+self._id+"_edit .name").val(),
 			$("#"+self._id+"_edit .email").val(),
 			permissions,
 			function(error, result) {
@@ -102,12 +105,12 @@ Template.managedUsers.events({
 	'click #submit' : function () {
 		var self = this;
 		var permissions = {};
-		_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) { 
+		_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) {
 			permissions[k] = $("#newUser .permissions ."+k).prop('checked');
 		});
 		Meteor.call('addUser',
-			$("#newUser .username").val(), 
-			$("#newUser .name").val(), 
+			$("#newUser .username").val(),
+			$("#newUser .name").val(),
 			$("#newUser .email").val(),
 			permissions,
 			function(error, result) {
@@ -126,14 +129,14 @@ Template.managedUsers.events({
 	},
 
 	'click #cancel': function () {
-		Template.managedUsers.clearForm();	
+		Template.managedUsers.clearForm();
 	}
 });
 
 // managedUserForm
 Template.managedUserForm.permissions = function() {
 	var permissions = new Array();
-	_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) { 
+	_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) {
 		permissions.push({name: k, description: Meteor.ManagedUsers.availablePermissions()[k]});
 	});
 	return permissions;

@@ -10,3 +10,7 @@
     cursor: pointer;
 }
 
+#managedUsers-table .prevent-remove {
+  color: #ccc;
+}
+
