@@ -64,8 +64,17 @@ if(Meteor.isServer) {
 		removeUser: function(userId) {
 			if(! Meteor.ManagedUsers.isAdmin())
 				throw new Meteor.Error(401, "Only admin is allowed to do this.");
-			if(Meteor.user()._id === userId)
+
+			var u = Meteor.users.findOne({ _id: userId});
+			if(u === undefined)
+				throw new Meteor.Error(401, "User not in database.");
+
+			if(u.username === 'admin')
 				throw new Meteor.Error(401, "Admin can not be removed.");
+
+			if(Meteor.user()._id === userId)
+				throw new Meteor.Error(401, "You can not delete yourself.");
+
 			Meteor.users.remove(userId);
 			return true;
 		},
@@ -77,9 +86,15 @@ if(Meteor.isServer) {
 			if(!name)
 				throw new Meteor.Error(400, "Name can not be blank.");
 			Meteor.ManagedUsers.checkEmailAddress(address, userId);
-			if(Meteor.user()._id === userId) {
+
+			var u = Meteor.users.findOne({ _id: userId});
+			if(u === undefined)
+				throw new Meteor.Error(401, "User not in database.");
+
+			if(u.username === 'admin') {
 				username = "admin";
 				name = "Administrator";
+				permissions = {};
 			}
 			if(address) {
 				address = new Array({address: address});
