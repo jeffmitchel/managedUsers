@@ -3,9 +3,10 @@ Package.describe({
 });
 
 Package.on_use(function(api) {
-    api.use(['minimongo', 'mongo-livedata', 'templating', 'accounts-ui', 'accounts-password', 'email'], [
-        'client', 'server']);
-    api.use(['handlebars', 'bootstrap-3'], 'client');
+    // api.use(['minimongo', 'mongo-livedata', 'templating', 'accounts-ui', 'accounts-password', 'email'], [
+    //     'client', 'server']);
+    api.use(['ui', 'templating'], 'client');
+    api.use(['accounts-ui', 'accounts-password'], ['client', 'server']);
     api.add_files(['managedUsers.js'], ['client', 'server']);
     api.add_files(['managedUsersTemplates.html', 'managedUsersTemplates.js', 'managedUsers.css'], 'client');
 });

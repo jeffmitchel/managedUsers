@@ -133,16 +133,16 @@ Template.managedUsers.events({
 	}
 });
 
-// managedUserForm
-Template.managedUserForm.permissions = function() {
-	var permissions = new Array();
-	_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) {
-		permissions.push({name: k, description: Meteor.ManagedUsers.availablePermissions()[k]});
-	});
-	return permissions;
-}
-
 Template.managedUserForm.helpers({
+	permissions: function() {
+		var perms = new Array();
+
+		_.keys(Meteor.ManagedUsers.availablePermissions()).forEach(function(k) {
+			perms.push({name: k, description: Meteor.ManagedUsers.availablePermissions()[k]});
+		});
+
+		return perms;
+	},
 	disableIfAdminUser: function () {
 		return this.username === 'admin' ? 'disabled' : '';
 	},

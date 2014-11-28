@@ -45,7 +45,7 @@ if(Meteor.isServer) {
 	// Verify that the admin user account exists (should be created on the first run)
 	var u = Meteor.users.findOne({username: "admin"}); // find the admin user
 	if(!u) {
-		Accounts.createUser({username: "admin", password: "abc123", profile: {name: "Administrator"}});
+		Accounts.createUser({username: "admin", email: 'admin@admin.com', password: "abc123", profile: {name: "Administrator"}});
 	}
 
 
@@ -146,24 +146,24 @@ if(Meteor.isClient) {
 	Accounts.ui.config({passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'});
 
 	// A shared Handlebars helper that returns true when the logged in user is "admin"
-	Handlebars.registerHelper('isAdmin', function() {
+	UI.registerHelper('isAdmin', function() {
 		return Meteor.ManagedUsers.isAdmin();
 	});
 
 	// The current user's full name
-	Handlebars.registerHelper('profileName', function() {
+	UI.registerHelper('profileName', function() {
 		if(Meteor.user() && Meteor.user().profile && Meteor.user().profile.name)
 			return Meteor.user().profile.name;
 	});
 
 	// Pass a user object, and get the email address
-	Handlebars.registerHelper('emailAddress', function(user) {
+	UI.registerHelper('emailAddress', function(user) {
 		if(user && user.emails)
 			return user.emails[0].address;
 	});
 
 	// Pass the permission name (as a string) to this helper
-	Handlebars.registerHelper('hasPermission', function(permission) {
+	UI.registerHelper('hasPermission', function(permission) {
 		return Meteor.ManagedUsers.hasPermission(permission);
 	});
 }

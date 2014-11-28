@@ -44,14 +44,12 @@
     <div class="row">
         <form id="newUser" class="well form-horizontal col-md-12" role="form">
             <legend>New User</legend>
-            {{#isolate}}
             {{#if newManagedUserError}}
             <div class="alert alert-danger alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Error</strong> {{newManagedUserError}}
             </div>
             {{/if}}
-            {{/isolate}}
             {{> managedUserForm}}
             <div class="form-group">
                 <div class="col-md-4 col-md-offset-2">
@@ -73,14 +71,12 @@
                 </div>
                 <div class="modal-body">
                     <form class="well form-horizontal">
-                        {{#isolate}}
                         {{#if editManagedUserError}}
                         <div class="alert alert-danger alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Error</strong> {{editManagedUserError}}
                         </div>
                         {{/if}}
-                        {{/isolate}}
                         {{> managedUserForm}}
                     </form>
                     <div class="row">
